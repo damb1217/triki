@@ -1,6 +1,6 @@
 
-const x = "✖";
-const o = "O";
+const x = "❌";
+const o = "⚫";
 
 
 const cuadrados = document.querySelectorAll(".cuadrado");
