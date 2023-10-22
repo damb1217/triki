@@ -20,17 +20,24 @@ function addClass(e) {
     console.log(element);
 }
 
-document.querySelector(".cuadrado").addEventListener("click", addClass);
+//document.querySelectorAll(".cuadrado").addEventListener("click", addClass);
 
 
 cuadrados.forEach((cuadrado, posicion) =>{
     cuadrado.addEventListener("click", ()=>{
+        if(cuadrado.classList.contains ("x") || cuadrado.classList.contains("o")) return;
+        
         if(estadoJuego === "PAUSA") return;
         if(cuadrado.textContent !== "") return;
-        cuadrado.textContent = estadoJuego === "P1" ? x : o;
+        
+        //cuadrado.textContent = estadoJuego === "P1" ? x : o; //
+    const clase = estadoJuego === "P1" ? "x" : "o";
+    cuadrado.classList.add(clase);
+    
+    console.log(cuadrado.classList)  
         estadoJuego = estadoJuego === "P1" ? "P2" : "P1";
         const posicionGanadora = revisarSiHayGanador();
-        console.log(typeof posicionGanadora)
+        console.log(posicionGanadora)
         if(typeof posicionGanadora === "object") {
             ganar(posicionGanadora)
             return
@@ -43,7 +50,7 @@ cuadrados.forEach((cuadrado, posicion) =>{
 
 modal.querySelector("button").addEventListener("click", ()=>{
     cuadrados.forEach(cuadrado => {
-        cuadrado.textContent = "";
+        cuadrado.classList.remove ("x", "o");
         cuadrado.classList.toggle("ganador",false);
     });
     modal.close();
@@ -51,7 +58,16 @@ modal.querySelector("button").addEventListener("click", ()=>{
 })
 
 function revisarSiHayGanador(){
-    const tablero = Array.from(cuadrados).map(cuadrado => cuadrado.textContent);
+    const tablero = Array.from(cuadrados).map(cuadrado =>{ 
+    if (cuadrado.classList.contains("x")) return "x";
+    else if(cuadrado.classList.contains("o")) return "o";
+    else return "";
+
+
+}
+
+    );
+    
     console.log(tablero)
 
     // filas
