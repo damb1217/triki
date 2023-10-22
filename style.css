@@ -18,7 +18,7 @@ h1{
 
 #contenedorGrilla{
     display: grid;
-    grid-template-columns: repeat(3, 0fr);
+    grid-template-columns: repeat(4, 0fr);
     justify-content: center;
    
 }
@@ -36,17 +36,38 @@ h1{
     background-color: white;
 }
 
+.x{
+    background-image: url("./moni.png");
+    background-size: cover;
+}
+
+.o{
+    background-image: url("./ensayo.jpg");
+    background-size: cover;
+}
+
 .arriba{
     border-bottom: var(--line-style);
 }
 
 .medio{
-    border-left: var(--line-style);
-    border-right: var(--line-style);
+    border-bottom: var(--line-style);
 }
 
 .abajo{
-    border-top: var(--line-style);
+    border-bottom: var(--line-style);
+}
+
+.uno{
+    border-right: var(--line-style);
+}
+
+.dos{
+    border-right: var(--line-style);
+}
+
+.tres{
+    border-right: var(--line-style);
 }
 
 .ganador{
